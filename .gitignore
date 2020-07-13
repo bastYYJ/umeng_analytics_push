@@ -1,0 +1,16 @@
+.DS_Store
+.dart_tool/
+
+.packages
+.pub/
+
+build/
+
+.idea/
+.vscode/
+*.iml
+
+.project
+.classpath
+.flutter-plugins-dependencies
+.settings/
