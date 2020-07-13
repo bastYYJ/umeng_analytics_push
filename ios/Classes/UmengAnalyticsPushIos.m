@@ -1,9 +1,16 @@
 #import "UmengAnalyticsPushIos.h"
 #import <UMCommon/UMCommon.h>
+<<<<<<< HEAD
 #import <UMPush/UMessage.h>
 #import <UserNotifications/UserNotifications.h>
 #import <UMCommonLog/UMCommonLogHeaders.h>
 #include <arpa/inet.h>
+=======
+#import <UMAnalytics/MobClick.h>
+#import <UMPush/UMessage.h>
+#import <UserNotifications/UserNotifications.h>
+#import <UMCommonLog/UMCommonLogHeaders.h>
+>>>>>>> d11639ab7e9dd6f46d79ecffebbcb1062b3d2611
 
 extern FlutterEventSink _eventSink;
 @implementation UmengAnalyticsPushFlutterIos
@@ -32,7 +39,10 @@ extern FlutterEventSink _eventSink;
 
 // 处理友盟推送
 + (void)handleCustomMessagePush:(NSDictionary *)userInfo {
+<<<<<<< HEAD
     NSLog(@"================= 收到 ====================");
+=======
+>>>>>>> d11639ab7e9dd6f46d79ecffebbcb1062b3d2611
     if (userInfo)
     {
         if ([userInfo objectForKey:@"custom_message"])

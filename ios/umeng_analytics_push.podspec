@@ -18,6 +18,10 @@ A new flutter plugin project.
   s.static_framework = true
 
   s.dependency 'UMCCommon'
+<<<<<<< HEAD
+=======
+  s.dependency 'UMCAnalytics'
+>>>>>>> d11639ab7e9dd6f46d79ecffebbcb1062b3d2611
   s.dependency 'UMCPush'
   s.dependency 'UMCCommonLog'
   s.dependency 'UMCSecurityPlugins'
