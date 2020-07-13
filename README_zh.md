@@ -19,7 +19,7 @@ dependencies:
 dependencies:
   umeng_analytics_push:
       git:
-        url: https://github.com/zileyuan/umeng_analytics_push.git
+        url: https://github.com/bastYYJ/umeng_analytics_push.git
 ```
 
 ### Android设置（以Kotlin示例）
