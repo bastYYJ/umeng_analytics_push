@@ -1,5 +1,6 @@
 package io.github.zileyuan.umeng_analytics_push;
 
+import android.content.Intent;
 import android.util.Log;
 import android.content.Context;
 import com.umeng.commonsdk.UMConfigure;
@@ -39,7 +40,9 @@ public class UmengAnalyticsPushFlutterAndroid {
                     @Override
                     public void dealWithCustomAction(Context context, UMessage msg) {
                         Log.i("dealWithCustomAction --------->  ", msg.custom);
-                        UmengAnalyticsPushPlugin.eventSink.success(msg.custom);
+                        context.startActivity( context.getPackageManager().
+                                getLaunchIntentForPackage(context.getPackageName()));
+                        UmengAnalyticsPushPlugin.eventSink.success(msg.extra);
                     }
                 };
                 mPushAgent.setNotificationClickHandler(notificationClickHandler);
