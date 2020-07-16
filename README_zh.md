@@ -1,6 +1,6 @@
 # 友盟分析推送Flutter插件（umeng_analytics_push） [![pub package](https://img.shields.io/pub/v/umeng_analytics_push)](https://pub.flutter-io.cn/packages/umeng_analytics_push)
 
-- 语言: [English](https://github.com/zileyuan/umeng_analytics_push) | [中文简体](https://github.com/zileyuan/umeng_analytics_push/blob/master/README_zh.md)
+- 语言: [English](https://github.com/bastYYJ/umeng_analytics_push) | [中文简体](https://github.com/bastYYJ/umeng_analytics_push/blob/master/README_zh.md)
 - 友盟API详见: [umeng:analytics](http://mobile.umeng.com/analytics) & [umeng:push](http://mobile.umeng.com/push)
 - 注意注意: 以下面文档说明为准，不要参考example里面的设置
 
@@ -8,14 +8,8 @@
 
 ### 导入
 
-[![pub package](https://img.shields.io/pub/v/umeng_analytics_push)](https://pub.flutter-io.cn/packages/umeng_analytics_push)
 
 ```yaml
-dependencies:
-  umeng_analytics_push: ^x.x.x #最新版本见上方
-
-# 或者通过Git导入（二选一，Git版本可能更新更加及时）
-
 dependencies:
   umeng_analytics_push:
       git:
@@ -156,8 +150,25 @@ UmengAnalyticsPush.event('customEvent', '1000');
 
 ```dart
 import 'package:umeng_analytics_push/umeng_analytics_push.dart';
-
+// custom 为自定义参数 map
 UmengAnalyticsPush.addPushCustomMessageCallback((custom) {
   print(custom);
 });
 ```
+
+#### 检查通知栏权限
+
+```dart
+import 'package:umeng_analytics_push/umeng_analytics_push.dart';
+
+UmengAnalyticsPush.isNotifyEnabled()；
+```
+
+#### 打开配置通知栏权限页面
+
+```dart
+import 'package:umeng_analytics_push/umeng_analytics_push.dart';
+
+UmengAnalyticsPush.openPushSetting();
+```
+
