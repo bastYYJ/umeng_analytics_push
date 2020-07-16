@@ -9,7 +9,8 @@ void main() {
     print("收到@@@@@@@@@@ $custom");
   };
 
-  UmengAnalyticsPush.addPushCustomMessageCallback((dynamic custom) => call(custom));
+  UmengAnalyticsPush.addPushCustomMessageCallback(
+      (dynamic custom) => call(custom));
   runApp(MyApp());
 }
 
@@ -29,7 +30,17 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: MaterialButton(
+            child: Text('open push setting'),
+            textColor: Colors.white,
+            onPressed: () async {
+              if (await UmengAnalyticsPush.isNotifyEnabled()) {
+                print("已获取权限");
+              } else {
+                UmengAnalyticsPush.openPushSetting();
+              }
+            },
+          ),
         ),
         body: Center(),
       ),

@@ -39,7 +39,7 @@ public class UmengAnalyticsPushFlutterAndroid {
                 UmengNotificationClickHandler notificationClickHandler = new UmengNotificationClickHandler() {
                     @Override
                     public void dealWithCustomAction(Context context, UMessage msg) {
-                        Log.i("dealWithCustomAction --------->  ", msg.custom);
+                        Log.i("push msg --------->", msg.extra.toString());
                         context.startActivity( context.getPackageManager().
                                 getLaunchIntentForPackage(context.getPackageName()));
                         UmengAnalyticsPushPlugin.eventSink.success(msg.extra);

@@ -75,4 +75,14 @@ class UmengAnalyticsPush {
     }
     await _methodChannel.invokeMethod('event', args);
   }
+
+  /// Open the push permission application page
+  static Future<void> openPushSetting() async {
+     await _methodChannel.invokeMethod<bool>('openPushSetting');
+  }
+
+  /// Whether to get push permission
+  static Future<bool> isNotifyEnabled() async {
+    return await _methodChannel.invokeMethod<bool>('isNotifyEnabled');
+  }
 }
