@@ -2,7 +2,6 @@
 
 - 语言: [English](https://github.com/bastYYJ/umeng_analytics_push) | [中文简体](https://github.com/bastYYJ/umeng_analytics_push/blob/master/README_zh.md)
 - 友盟API详见: [umeng:analytics](http://mobile.umeng.com/analytics) & [umeng:push](http://mobile.umeng.com/push)
-- 注意注意: 以下面文档说明为准，不要参考example里面的设置
 
 ## 用法
 
