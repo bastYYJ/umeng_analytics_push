@@ -17,11 +17,12 @@ A new flutter plugin project.
   s.dependency 'Flutter'
   s.static_framework = true
 
-  s.dependency 'UMCCommon'
-  s.dependency 'UMCPush'
-  s.dependency 'UMCCommonLog'
+s.dependency 'UMCCommon','6.0.5'
+s.dependency 'UMCAnalytics','2.1.1'
+s.dependency 'UMCPush','3.2.4'
+s.dependency 'UMCCommonLog','1.0.0'
   s.dependency 'UMCSecurityPlugins'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '8.0'
 end
 

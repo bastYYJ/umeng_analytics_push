@@ -1,5 +1,6 @@
 #import "UmengAnalyticsPushPlugin.h"
 #import <UMCommon/UMCommon.h>
+#import <UMAnalytics/MobClick.h>
 #import <UMPush/UMessage.h>
 
 FlutterMethodChannel* methodChannel;
@@ -51,14 +52,21 @@ FlutterEventSink _eventSink;
 - (void)event:(FlutterMethodCall*)call result:(FlutterResult)result {
     NSString* eventId = call.arguments[@"eventId"];
     NSString* label = call.arguments[@"label"];
+    if (label == nil) {
+        [MobClick event:eventId];
+    } else {
+        [MobClick event:eventId label:label];
+    }
 }
 
 - (void)pageStart:(FlutterMethodCall*)call result:(FlutterResult)result {
   NSString* pageName = call.arguments[@"pageName"];
+  [MobClick beginLogPageView:pageName];
 }
 
 - (void)pageEnd:(FlutterMethodCall*)call result:(FlutterResult)result {
   NSString* pageName = call.arguments[@"pageName"];
+  [MobClick endLogPageView:pageName];
 }
 
 - (void)addTags:(FlutterMethodCall *)call result:(FlutterResult)result {

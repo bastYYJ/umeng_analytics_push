@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 
@@ -78,11 +79,13 @@ class UmengAnalyticsPush {
 
   /// Open the push permission application page
   static Future<void> openPushSetting() async {
-     await _methodChannel.invokeMethod<bool>('openPushSetting');
+    if (Platform.isAndroid)
+      await _methodChannel.invokeMethod<bool>('openPushSetting');
   }
 
   /// Whether to get push permission
   static Future<bool> isNotifyEnabled() async {
-    return await _methodChannel.invokeMethod<bool>('isNotifyEnabled');
+    if (Platform.isAndroid)
+      return await _methodChannel.invokeMethod<bool>('isNotifyEnabled');
   }
 }
