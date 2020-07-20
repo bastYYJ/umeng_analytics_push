@@ -80,19 +80,40 @@ import Flutter
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
-    override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        GeneratedPluginRegistrant.register(with: self)
-        UmengAnalyticsPushFlutterIos.iosInit(launchOptions, appkey:"uemng_app_key", channel:"appstore", logEnabled:false, pushEnabled:true);
-        return super.application(application, didFinishLaunchingWithOptions: launchOptions)
-    }
-
-    // 如果需要处理自定义Push点击，用下面代码
-    @available(iOS 10.0, *)
-    override func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        let userInfo = response.notification.request.content.userInfo
-        UmengAnalyticsPushFlutterIos.handleCustomMessagePush(userInfo)
-        completionHandler()
-    }
+     override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+            GeneratedPluginRegistrant.register(with: self)
+            UmengAnalyticsPushFlutterIos.iosInit(launchOptions, appkey:"uemng_app_key", channel:"appstore", logEnabled:false, pushEnabled:true);
+            if #available(iOS 10.0, *) {
+                    UNUserNotificationCenter.current().delegate = self
+                }
+            return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+        }
+    
+        // If you need to handle custom Push clicks, use the following code
+           @available(iOS 10.0, *)
+           override func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+               let userInfo = response.notification.request.content.userInfo
+               UmengAnalyticsPushFlutterIos.handleCustomMessagePush(userInfo)
+               completionHandler()
+           }
+           
+           override func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+               let device = NSData(data: deviceToken)
+               
+               let deviceId = device.description.replacingOccurrences(of:"<", with:"").replacingOccurrences(of:">", with:"").replacingOccurrences(of:" ", with:"")
+               
+               NSLog("我的deviceToken：\(deviceId)")
+           }
+           
+           override func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+               UmengAnalyticsPushFlutterIos.handleCustomMessagePush(userInfo)
+       
+           }
+           
+           @available(iOS 10.0, *)
+           override func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+               completionHandler([.alert, .sound, .badge])
+           }
 }
 ```
 
